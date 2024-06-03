@@ -71,7 +71,8 @@ kg_retriever = kg_index.as_retriever(include_text=True,
                                      similarity_top_k=10)
 
 ################### BM25 Index #################
-####################### While loading Indices from persist #######################
+####################### While load
+# ing Indices from persist #######################
 # Settings.llm = llm
 # Settings.embed_model = embed_model
 storage_context_v = StorageContext.from_defaults(persist_dir="/storage/bm25")
@@ -221,7 +222,7 @@ def get_query(query=""):
     """
     response_1 = Hybrid_chat_engine.chat(query)
     response_2 = kg_chat_engine.chat(query)
-    response_3 = hybrid_bm25_chat_engine
+    response_3 = hybrid_bm25_chat_engine.chat(query)
     reference_1 = get_documents(response_1)
     reference_2 = get_documents(response_2)
     reference_3 = get_documents(response_3)
