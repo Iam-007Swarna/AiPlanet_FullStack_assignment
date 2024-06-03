@@ -7,9 +7,72 @@ import logging
 import IPython
 from IPython.display import display
 from pyvis.network import Network
+import dotenv
+from google.cloud import storage
+
+dotenv.load_dotenv()
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "tidy-resolver-411707-0f032726c297.json"
+
+
+def download_blob(bucket_name, source_blob_name, destination_file_name):
+    """Downloads a blob from the bucket."""
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(source_blob_name)
+    blob.download_to_filename(destination_file_name)
+    print(f"Downloaded storage object {source_blob_name} from bucket {bucket_name} to local file {destination_file_name}.")
+
+if not (os.path.exists("storage/bm25") and os.path.exists("storage/kg")):
+    # List of file names to download
+    file_names = [
+        "default__vector_store.json",
+        "docstore.json",
+        "graph_store.json",
+        "image__vector_store.json",
+        "index_store.json"
+    ]
+
+    # Bucket name
+    bucket_name = "title_tailors_bucket"
+
+    # Create the destination directory if it doesn't exist
+    os.makedirs("storage/bm25", exist_ok=True)
+
+    # Loop through the file names and download each one
+    for file_name in file_names:
+        source_blob_name = f"storage/bm25/{file_name}"
+        destination_file_name = f"storage/bm25/{file_name}"
+        download_blob(bucket_name, source_blob_name, destination_file_name)
+        
+    # List of file names to download
+    file_names = [
+        "default__vector_store.json",
+        "docstore.json",
+        "graph_store.json",
+        "image__vector_store.json",
+        "index_store.json"
+    ]
+
+    # Bucket name
+    bucket_name = "title_tailors_bucket"
+
+    # Create the destination directory if it doesn't exist
+    os.makedirs("storage/kg", exist_ok=True)
+
+    # Loop through the file names and download each one
+    for file_name in file_names:
+        source_blob_name = f"storage/kg/{file_name}"
+        destination_file_name = f"storage/kg/{file_name}"
+        download_blob(bucket_name, source_blob_name, destination_file_name)
+else:
+    print("Files already exist in the storage_file directory.")
+
 
 HF_TOKEN = os.environ.get("HF_TOKEN", None)
+
 MISTRAL_API = os.environ.get("MISTRAL_API", None)
+print(f"MISTRAL_API: {MISTRAL_API}")
 
 ## logger
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -53,6 +116,9 @@ from llama_index.core import PromptTemplate
 from llama_index.core import chat_engine
 from llama_index.core import memory
 
+import nest_asyncio
+nest_asyncio.apply()
+
 ################### Loading the LLM via Mistral API
 llm = MistralAI(api_key=MISTRAL_API, model="open-mixtral-8x7b")
 ### Loading the Embedding via Mistral API
@@ -62,7 +128,7 @@ embed_model = MistralAIEmbedding(api_key=MISTRAL_API, model = "mistral-embed")
 ########### While loading from persist only ###############
 Settings.llm = llm
 Settings.embed_model = embed_model
-kg_storage_context = StorageContext.from_defaults(persist_dir="/storage/kg")
+kg_storage_context = StorageContext.from_defaults(persist_dir="storage/kg")
 kg_index = load_index_from_storage(kg_storage_context)
 
 kg_retriever = kg_index.as_retriever(include_text=True,
@@ -71,11 +137,10 @@ kg_retriever = kg_index.as_retriever(include_text=True,
                                      similarity_top_k=10)
 
 ################### BM25 Index #################
-####################### While load
-# ing Indices from persist #######################
+####################### While loading Indices from persist #######################
 # Settings.llm = llm
 # Settings.embed_model = embed_model
-storage_context_v = StorageContext.from_defaults(persist_dir="/storage/bm25")
+storage_context_v = StorageContext.from_defaults(persist_dir="storage/bm25")
 index_v = load_index_from_storage(storage_context_v)
 
 vector_retriever = index_v.as_retriever(similarity_top_k=10)
@@ -236,8 +301,7 @@ def get_query(query=""):
 
 
 
-# get_query("what is difference between class I and class II ?")
-
+# print(get_query("what is difference between class I and class II ?"))
 # Based on the provided documents, Class I and Class II are two distinct evolutionary stages of young stellar objects (YSOs) in the process of forming stars. The documents describe the evolutionary stages of YSOs as follows:
 
 # * Class 0: The formation of a YSO in the central region of a protostellar core with an envelope mass that is much in excess of the YSO mass.

@@ -7,3 +7,13 @@ llama-index-llms-mistralai
 llama-index-embeddings-mistralai
 sentence-transformers
 llama-index-retrievers-bm25
+matplotlib
+python-dotenv
+google-api-core==2.15.0
+google-auth==2.26.2
+google-cloud-core==2.4.1
+google-cloud-storage==2.14.0
+google-crc32c==1.5.0
+google-resumable-media==2.7.0
+googleapis-common-protos==1.62.0
+streamlit
