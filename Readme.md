@@ -1,5 +1,17 @@
 # Astronomy Black Hole Hybrid RAG 💫🚀
+### Hybrid BM25 + RAG + Knowledge Graph + Query Enhancement 🚀
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zSwqQ7pJWBTLGS3cXnU4Per4lhyXRxUt?usp=sharing)
 
+<p align="center">
+  <img src="https://www.stardog.com/img/hiw/based-on-graph.gif?_cchid=e3e923b72d9d7382a58a565ad431ae46" alt="Mistral-7B-Instruct-v0.3">
+</p>
+
+**[RAG with Knowledge Graph for Black Hole Research](https://github.com/Iam-007Swarna/AiPlanet_FullStack_assignment)**
+* Presented by `Swarnava Bhattacharjee` 
+* Date : *03rd June 2024*
+
+## 🌐 Socials
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/swarnavab) [![Medium](https://img.shields.io/badge/Medium-12100E?logo=medium&logoColor=white)](https://medium.com/@iamswarnava) [![GitHub](https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white)](https://github.com/Iam-007Swarna) [![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/swarnava007)
 This repository contains a Python codebase for a hybrid retrieval-augmented generation (RAG) system designed for the astronomy domain, with a focus on black holes. The system combines various retrieval techniques, including dense vector retrieval, BM25 retrieval, and knowledge graph retrieval, to provide comprehensive and accurate responses to user queries.
 
 ## Features
