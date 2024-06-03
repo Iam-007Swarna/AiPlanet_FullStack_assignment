@@ -2,7 +2,7 @@
 ### Hybrid BM25 + RAG + Knowledge Graph + Query Enhancement 🚀
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1zSwqQ7pJWBTLGS3cXnU4Per4lhyXRxUt?usp=sharing)
 
-**[!Demo](https://huggingface.co/spaces/Swarnava/KGraphRAG_ChatBot)**
+**[Demo](https://huggingface.co/spaces/Swarnava/KGraphRAG_ChatBot)**
 
 <p align="center">
   <img src="https://www.stardog.com/img/hiw/based-on-graph.gif?_cchid=e3e923b72d9d7382a58a565ad431ae46" alt="Mistral-7B-Instruct-v0.3">
