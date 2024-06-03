@@ -1,0 +1,9 @@
+llama_index 
+pyvis 
+Ipython 
+PyPDF2
+llama-index-llms-huggingface
+llama-index-llms-mistralai
+llama-index-embeddings-mistralai
+sentence-transformers
+llama-index-retrievers-bm25
