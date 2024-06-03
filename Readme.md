@@ -1,4 +1,4 @@
-# Astronomy Black Hole Hybrid RAG
+# Astronomy Black Hole Hybrid RAG 💫🚀
 
 This repository contains a Python codebase for a hybrid retrieval-augmented generation (RAG) system designed for the astronomy domain, with a focus on black holes. The system combines various retrieval techniques, including dense vector retrieval, BM25 retrieval, and knowledge graph retrieval, to provide comprehensive and accurate responses to user queries.
 
