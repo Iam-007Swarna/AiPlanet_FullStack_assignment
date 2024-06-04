@@ -29,7 +29,7 @@ This repository contains a Python codebase for a hybrid retrieval-augmented gene
 1. Clone the repository:
 
 
-git clone https://github.com/your-repo/astronomy-bh-hybrid-rag.git
+git clone https://github.com/Iam-007Swarna/AiPlanet_FullStack_assignment.git
 
 
 2. Install the required dependencies:
